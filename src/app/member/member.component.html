@@ -1,0 +1,120 @@
+<div id="container">
+    <div class="row">
+        <div class="col-6">
+            <h4 style="margin-left:3%;padding-top: 3%;">Create Member</h4>
+        </div>
+        <!-- choice button -->
+        <div class="col-6">
+            <a type="button" class="btn btn-info add" [routerLink]="[ '/history']">
+            History</a>
+            <a type="button" class="btn btn-info add" [routerLink]="[ '/import']">
+            Import File</a>
+            <a type="button" class="btn btn-info add" [routerLink]="[ '/master']">
+            Import Master</a>
+            <button type="button" class="btn btn-info add" [routerLink]="[ '/member']">
+            Create Member</button>
+            <a type="button" class="btn btn-info add" [routerLink]="[ '/createqr']">
+            Create QR Code</a>
+            <a type="button" class="btn btn-info add" [routerLink]="[ '/shipping']">
+            Dashboard</a>
+        </div>
+    </div><hr />
+    <div id="body">
+        <!-- Button trigger modal -->
+        <div  style="float: right;">
+            <a type="button" class="btn btn-info add" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Create</a>
+        </div><br />
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Create Member</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form class="container was-validated" novalidate="">
+                    <div class="modal-body">
+                        <div class="form-floating form-group" style="height:70px">
+                            <input type="text" class="form-control" id="validationTextarea" style="width:100%" [(ngModel)]="fname" [ngModelOptions]="{standalone: true}" minlength="3" required="required" autocomplete="off" aria-describedby="validationTextareaFeedback"  autofocus>
+                            <label  for="validationTextarea" class="form-label">Name :</label>
+                            <div id="validationTextareaFeedback" class="invalid-feedback"> Input name </div>
+                        </div><br />
+                        <div class="form-floating form-group" style="height:70px">
+                            <input type="email" class="form-control" id="validationTextarea" style="width:100%" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" minlength="3" required="required" autocomplete="off" aria-describedby="validationTextareaFeedback"  autofocus>
+                            <label  for="validationTextarea" class="form-label">E-mail :</label>
+                            <div id="validationTextareaFeedback" class="invalid-feedback"> Input E-mail </div>
+                        </div><br />
+                        <div class="form-floating form-group" style="height:70px">
+                            <input type="password" class="form-control" id="validationTextarea" style="width:100%" [(ngModel)]="pass" [ngModelOptions]="{standalone: true}" minlength="3" required="required" autocomplete="off" aria-describedby="validationTextareaFeedback"  autofocus>
+                            <label  for="validationTextarea" class="form-label">Password :</label>
+                            <div id="validationTextareaFeedback" class="invalid-feedback"> Input Password </div>
+                        </div><br />
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <input type="submit" id="submit" name="submit" class="btn submit" (click)="manage('create')" value="Save">
+                    <input type="button" class="btn btn-secondary cancel" data-bs-dismiss="modal" value="Cancel"> 
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- table -->
+        <table class="table" width="100%" style="margin-top:2%;text-align: center;">
+            <thead class="table-info">
+                <tr>
+                    <th width="10%">#</th>
+                    <th width="20%">Name</th>
+                    <th width="30%">Email</th>
+                    <th width="20%">Manage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of datas;let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.email}}</td>
+                    <td>
+                        <div class="row" style="text-align: center;">
+                            <div class="col-3"><a style="color: red;font-size: 16px;cursor: pointer;" (click)="manage(item)"><i class="bi bi-trash" ></i></a></div>
+                            <div class="col-3"><a style="color: gold;font-size: 16px;cursor: pointer;" data-bs-toggle="modal" [attr.data-bs-target]="'#collapse' + item._id" aria-expanded="true" [attr.aria-controls]="'collapse' + item._id"><i (click)="Test1(item);" class="bi bi-pencil-square"></i></a></div>
+                        </div>                    
+                        <!-- Edit Modal -->
+                        <div class="modal fade" [id]="'collapse' + item._id" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="collapseLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="collapseLabel">Edit Member</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form class="container was-validated" novalidate="">
+                                    <div class="modal-body">
+                                        <div class="form-floating form-group" style="height:70px">
+                                            <input type="text" class="form-control" id="validationTextarea" style="width:100%" [(ngModel)]="fname" [ngModelOptions]="{standalone: true}" minlength="3" required="required" autocomplete="off" aria-describedby="validationTextareaFeedback"  autofocus>
+                                            <label  for="validationTextarea" class="form-label">Name :</label>
+                                            <div id="validationTextareaFeedback" class="invalid-feedback"> Input name </div>
+                                        </div><br />
+                                        <div class="form-floating form-group" style="height:70px">
+                                            <input type="email" class="form-control" id="validationTextarea" style="width:100%" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" minlength="3" required="required" autocomplete="off" aria-describedby="validationTextareaFeedback"  autofocus>
+                                            <label  for="validationTextarea" class="form-label">E-mail :</label>
+                                            <div id="validationTextareaFeedback" class="invalid-feedback"> Input E-mail </div>
+                                        </div><br />
+                                        <div class="form-floating form-group" style="height:70px">
+                                            <input type="password" class="form-control" id="validationTextarea" style="width:100%" [(ngModel)]="pass" [ngModelOptions]="{standalone: true}" minlength="3" required="required" autocomplete="off" aria-describedby="validationTextareaFeedback"  autofocus>
+                                            <label  for="validationTextarea" class="form-label">Password :</label>
+                                            <div id="validationTextareaFeedback" class="invalid-feedback"> Input Password </div>
+                                        </div><br />
+                                    </div>
+                                </form>
+                                <div class="modal-footer">
+                                    <input type="submit" id="submit" name="submit" class="btn submit" (click)="manage('update')" value="Save">
+                                    <input type="button" class="btn btn-secondary cancel" data-bs-dismiss="modal" value="Cancel"> 
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

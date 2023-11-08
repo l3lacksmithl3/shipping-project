@@ -1,0 +1,108 @@
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Hello {{name}}</h1>
+        <a class="btn btn-default" (click)="print()" style="margin: 10px">print</a>
+      </div>
+    </div>
+  
+  <div class="row">
+      <div class="col-md-12">
+  
+  <div class="book" id="print">
+    <div class="page break-after" *ngFor="let p of pages; let i = index">
+  
+      Side {{i + 1}}/100
+  
+      <div class="subpage">
+  
+        <table style="width:100%">
+          <tr class="table-header">
+            <th>Postnr</th>
+            <th>NS-kode/Tekst</th>
+            <th>Enhet</th>
+            <th>Mengde</th>
+            <th>Pris</th>
+            <th>Sum</th>
+          </tr>
+  
+          <!-- space -->
+          <tr class="table-body">
+            <td>&nbsp;</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+  
+          <tr class="table-body">
+            <td>07</td>
+            <td class="chapter-title">Stålkonstruksjoner</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+  
+          <!-- space -->
+          <tr class="table-body">
+            <td>&nbsp;</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+  
+          <tr class="table-body">
+            <td>07.26</td>
+            <td class="chapter-title">Yttertak</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+  
+          <!-- space -->
+          <tr class="table-body">
+            <td>&nbsp;</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+  
+          <tr class="table-body">
+            <td>07.23.1</td>
+            <td>PB1.322A</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr class="table-body">
+            <td></td>
+            <td>FAGVERK MED SVEISTE FORBINDELSER</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+  
+        </table>
+      </div>
+    </div>
+  
+  
+    <div class="page break-before">
+      <div class="subpage">Page 2/2</div>
+    </div>
+  </div>
+  
+      </div>
+    </div>
+  </div>
+  

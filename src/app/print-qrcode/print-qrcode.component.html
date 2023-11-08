@@ -1,0 +1,132 @@
+<div id="container">
+    <div class="row">
+        <div class="col-6">
+            <h4 style="margin-left:3%;padding-top: 3%;">Create QR Code : Generate QR</h4>
+        </div>
+        <!-- choice button -->
+        <div class="col-6">
+            <a type="button" class="btn btn-info add" [routerLink]="[ '/history']">
+            History</a>
+            <a type="button" class="btn btn-info add" [routerLink]="[ '/import']">
+            Import File</a>
+            <a type="button" class="btn btn-info add" [routerLink]="[ '/master']">
+                Import Master</a>
+            <a type="button" class="btn btn-info add" [routerLink]="[ '/member']">
+            Create Member</a>
+            <button type="button" class="btn btn-info add" [routerLink]="[ '/createqr']">
+            Create QR Code</button>
+            <a type="button" class="btn btn-info add" [routerLink]="[ '/shipping']">
+            Dashboard</a>
+        </div>
+    </div><hr />
+    <div id="body">
+        <!-- input -->
+        <div class="row">
+            <div class="col-10"></div>
+            <div class="col-2">
+                <button type="button" class="btn btn-info add" [routerLink]="[ '/print_qrcode']">
+                    Generate QR</button>
+            </div>
+        </div><br />
+        <table class="table" width="100%" style="margin-top:1%; text-align:center;">
+            <thead class="table-info">
+                <tr>
+                    <th width="25%">Invoice</th>
+                    <th width="25%">Model</th>
+                    <th width="10%">Qty</th>
+                    <th width="10%">Total Pallet</th>
+                    <th width="15%">Status</th>
+                    <th width="15%">Print</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of data;let i = index">
+                    <td>{{item.invoice}}</td>
+                    <td>{{item.model}}</td>
+                    <td>{{item.qty}}</td>
+                    <td>{{item.total_pallet}}</td>
+                    <td *ngIf="item.status == 0">No Print</td>
+                    <td *ngIf="item.status != 0">Print</td>
+                    <td style="display: inline-block;margin:auto;" *ngIf="item.status == 0"><a type="button" (click)="print_label(item)" class="btn" id="submit" style="width: 110px;"><i class="bi bi-printer"></i> Print</a></td>
+                    <td style="display: inline-block;margin:auto;" *ngIf="item.status != 0"><a type="button" (click)="print_label(item)" class="btn" id="submit" style="width:110px"><i class="bi bi-printer"></i> &nbsp; Re-Print</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div [hidden]="type != 1">
+        <body id="print" style='font-size:16px;padding-top:4%;padding-left:10%;'>
+                            
+            <table width='100%' *ngFor="let item of count_data;" style='padding-top:0%;padding-bottom:5%;'>
+                <tr>
+                    <td colspan="2"><img style='width:80%;height: 30px;' [src]="imageSource"></td>
+                    <td rowspan="3"><qr-code class="qr-code" [size]="80" [value]="item.qrInfo" ></qr-code></td>
+                </tr>
+                <tr>
+                    <td style="height: 30px;padding-top: 3px;"><b>Invoice No.</b></td>
+                    <td style="height: 30px;padding-top: 3px;">{{item.invoice}}</td>
+                </tr>
+                <tr>
+                    <td *ngIf="item.type == 'Normal'" style="height: 30px;"><b>Pallet No.</b></td>
+                    <td *ngIf="item.type == 'Special'" style="height: 30px;"><b>Box No.</b></td>
+                    <td style="height: 30px;">{{item.no_pallet}} / {{item.total_pallet}}</td>
+                </tr>
+                <tr>
+                    <td style="height: 30px;"><b>Qty</b></td>
+                    <td style="height: 30px;">{{item.qty}}</td>
+                    <td></td>
+                </tr>
+            </table  >
+            </body >
+    <!-- <div [hidden]="type != 1">
+        <div class="container" id="print">
+        <table width='100%' *ngFor="let item of count_data;" style='font-size: 16px; page-break-after: always'>
+            <tbody>
+                <tr>
+                    <td colspan="2"><img style='width:80%;height: 30px;' [src]="imageSource"></td>
+                    <td rowspan="3"><qr-code class="qr-code" [size]="80" [value]="item.qrInfo" ></qr-code></td>
+                </tr>
+                <tr>
+                    <td style="height: 20px;padding-top: 3px;"><b>Invoice No.</b></td>
+                    <td style="height: 20px;padding-top: 3px;">{{item.invoice}}</td>
+                </tr>
+                <tr>
+                    <td *ngIf="item.type == 'Normal'" style="height: 20px;"><b>Pallet No.</b></td>
+                    <td *ngIf="item.type == 'Special'" style="height: 20px;"><b>Box No.</b></td>
+                    <td style="height: 20px;">{{item.no_pallet}} / {{item.total_pallet}}</td>
+                </tr>
+                <tr>
+                    <td style="height: 20px;"><b>Qty</b></td>
+                    <td style="height: 20px;">{{item.qty}}</td>
+                    <td></td>
+                </tr>
+            </tbody>
+       </table>
+    </div> -->
+    <!-- <div [hidden]="type != 1">
+        <div class="container" id="print">
+        <table width='100%' *ngFor="let item of count_data;" style='padding-top:0%;padding-left:5%;padding-bottom:0%;font-size: 16px; page-break-after: always'>
+            <tbody>
+                <tr>
+                    <td colspan="2"><img style='width:70%;padding-bottom:2%;height: 40px;padding-top: 7%;padding-left: 5%;' [src]="imageSource"></td>
+                    <td rowspan="3" style="padding-top: 8%;"><qr-code class="qr-code" [size]="90" [value]="item.qrInfo" ></qr-code></td>
+                </tr>
+                <tr>
+                    <td style="height: 28px;padding-left: 5%;padding-top: 3px;"><b>Invoice No.</b></td>
+                    <td style="height: 28px;padding-left: 5%;padding-top: 3px;">{{item.invoice}}</td>
+                </tr>
+                <tr>
+                    <td *ngIf="item.type == 'Normal'" style="height: 28px;padding-left: 5%;"><b>Pallet No.</b></td>
+                    <td *ngIf="item.type == 'Special'" style="height: 28px;padding-left: 5%;"><b>Box No.</b></td>
+                    <td style="height: 28px;padding-left: 5%;">{{item.no_pallet}} / {{item.total_pallet}}</td>
+                </tr>
+                <tr>
+                    <td style="height: 28px;padding-left: 5%;"><b>Qty</b></td>
+                    <td style="height: 28px;padding-left: 5%;">{{item.qty}}</td>
+                    <td></td>
+                </tr>
+            </tbody>
+       </table>
+    </div> -->
+
+</div>

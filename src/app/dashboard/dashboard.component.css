@@ -1,0 +1,90 @@
+.book {
+    float: none;
+  }
+  
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 10mm auto;
+  }
+  
+  .subpage {
+    padding: 1cm;
+    border: 1px black solid;
+    box-shadow: 0 .5mm 2mm rgba(0, 0, 0, .3);
+    height: 297mm;
+    background: white;
+  }
+  
+  td {
+    padding-left: 2mm;
+  }
+  
+  tr.table-header,
+  tr.table-header>th {
+    border: 1px solid black;
+    text-align: center;
+  }
+  
+  tr.table-body,
+  tr.table-body>td {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+  }
+  
+  tr.table-body:last-child {
+    border-bottom: 1px solid black;
+  }
+  
+  .chapter-title {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+  
+  .break-after {
+    display: block;
+    page-break-after: always;
+    position: relative;
+  }
+  
+  .break-before {
+    display: block;
+    page-break-before: always;
+    position: relative;
+  }
+  
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  
+  @media print {
+    html,
+    body {
+      width: 210mm;
+      height: 297mm;
+    }
+    div {
+      overflow: initial !important;
+      float: none !important;
+    }
+    .book {
+      float: none !important;
+    }
+    .page {
+      margin: 0;
+      border: initial;
+      border-radius: initial;
+      width: initial;
+      min-height: initial;
+      box-shadow: initial;
+      background: initial;
+      page-break-after: always;
+      page-break-inside: avoid;
+      float: none !important;
+    }
+  }
+  @media (max-width: 1366px)and (min-width: 768px) {}
+			
+			@media (max-width: 1920px) and (min-width: 1367px) {}
+  

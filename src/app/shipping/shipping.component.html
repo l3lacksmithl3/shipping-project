@@ -1,0 +1,79 @@
+<div id="container">
+    <div class="row">
+        <div class="col-6">
+            <h4 style="margin-left:3%;padding-top: 3%;">Check Shipping Product With Invoice Data From Logistic</h4>
+        </div>
+        <!-- choice button -->
+        <div class="col-6">
+            <a type="button" class="btn btn-info add" [routerLink]="[ '/history']">
+            History</a>
+            <a type="button" class="btn btn-info add" [routerLink]="[ '/import']">
+            Import File</a>
+            <a type="button" class="btn btn-info add" [routerLink]="[ '/master']">
+                Import Master</a>
+            <a type="button" class="btn btn-info add" [routerLink]="[ '/member']">
+            Create Member</a>
+            <a type="button" class="btn btn-info add" [routerLink]="[ '/createqr']">
+            Create QR Code</a>
+            <button type="button" class="btn btn-info add" [routerLink]="[ '/shipping']">
+            Dashboard</button>
+        </div>
+    </div><hr />
+    <div id="body">
+        <!-- show data -->
+        <div class="row">
+            <div class="col-6">
+                <table class="table" width="100%" style="margin-top:2%; text-align:center;">
+                    <thead>
+                        <tr>
+                            <th width="100%" style="font-size: 20px;background-color: rgb(253, 239, 158);" colspan="4">Production Data</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>No.</th>
+                            <th>Invoice</th>
+                            <th>Qty</th>
+                            <th>Total Pallet</th>
+                        </tr>
+                        <tr *ngFor="let item of data;let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{item.invoice}}</td>
+                            <td>{{item.qty}}</td>
+                            <td>{{item.total_pallet}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-6">
+                <table class="table" width="100%" style="margin-top:2%; text-align:center;">
+                    <thead>
+                        <tr>
+                            <th width="100%" style="font-size: 20px;background-color: rgb(158, 253, 253);" colspan="3">Logistic Data</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>No.</th>
+                            <th>Invoice</th>
+                            <th>Qty</th>
+                        </tr>
+                        <tr *ngFor="let item of Ldata;let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{item.invoice}}</td>
+                            <td>{{item.qty}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <button type="button" class="btn" *ngIf="count_L != count_P" disabled id="submit" [routerLink]="[ '/sendmail']">
+        Send E-mail</button>
+    <a type="button" class="btn" *ngIf="count_L == count_P" id="submit" [routerLink]="[ '/sendmail']">
+        Send E-mail</a>
+    <!-- <a type="button" class="btn" id="submit" [routerLink]="[ '/sendmail']">
+        Send E-mail</a> -->
+    <br /><br />
+    
+</div>

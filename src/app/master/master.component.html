@@ -1,0 +1,65 @@
+<div id="container">
+    <div class="row">
+        <div class="col-6">
+            <h4 style="margin-left:3%;padding-top: 3%;">Import Master Model to Database Manual</h4>
+        </div>
+        <!-- choice button -->
+        <div class="col-6">
+            <a type="button" class="btn btn-info add" [routerLink]="[ '/history']">
+            History</a>
+            <a type="button" class="btn btn-info add" [routerLink]="[ '/import']">
+            Import File</a>
+            <button type="button" class="btn btn-info add" [routerLink]="[ '/master']">
+            Import Master</button>
+            <a type="button" class="btn btn-info add" [routerLink]="[ '/member']">
+            Create Member</a>
+            <a type="button" class="btn btn-info add" [routerLink]="[ '/createqr']">
+            Create QR Code</a>
+            <a type="button" class="btn btn-info add" [routerLink]="[ '/shipping']">
+            Dashboard</a>
+        </div>
+    </div><hr />   	
+    <!-- Display status message -->
+    <div id="body">
+        <!-- File upload form -->
+        <div class="row">
+            <div class="col-6"></div>
+            
+        </div>
+        <div class="col-md-11" id="importFrm" style="margin-left:3%;padding-bottom:2%;"><br />  <!-- style="display: none;" -->
+            <div class="row">
+                <div class="col-6">
+                <label class="custom-file-upload" style="padding-top:1%;margin-left: 2%; width: 180px;">
+                    <!-- <input type="file" id="file" #inputFile (change)="import($event)" name="file"/>
+                    <input type="submit" class="btn" id="btn-n" name="importSubmit" value="IMPORT"> -->
+                    <!-- <label class="custom-file-upload"> -->
+                        <input type="file" #inputFile (change)="import($event)"/>
+                        <i class="bi bi-cloud-arrow-down-fill" style="font-size: 2rem;"></i> &nbsp;&nbsp;Choose File
+                    </label>
+                </div>
+            </div> 
+        </div>        
+        <!-- Data list table -->
+            <table class="table" width="80%" style="margin: 0 15px 0 15px;">
+                <thead class="table-info">
+                    <tr>
+                        <th>No.</th>
+                        <th>Model No.</th>
+                        <th>Model Name</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngIf="datas != ''">
+                        <tr *ngFor="let item of datas;let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{item.SEIHINNAME}}</td>
+                            <td>{{item.HINBAN}}</td>
+                            <td>{{item.type}}</td>
+                        </tr>
+                    </ng-container>
+                    <tr *ngIf="datas == ''"><td colspan="2">No member(s) found...</td></tr>
+                </tbody>
+            </table>
+    </div>
+</div>

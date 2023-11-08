@@ -1,0 +1,111 @@
+::selection { background-color: #E13300; color: white; }
+			::-moz-selection { background-color: #E13300; color: white; }
+
+			body {
+				background-color: #fff;
+				margin: 40px;
+				font: 13px/20px normal Helvetica, Arial, sans-serif;
+				color: #4F5155;
+			}
+			a {
+				color: #003399;
+				background-color: transparent;
+				font-weight: normal;
+			}
+			#body {
+				margin: 0 15px 0 15px;
+			}
+			p.footer {
+				text-align: right;
+				font-size: 11px;
+				border-top: 1px solid #D0D0D0;
+				line-height: 32px;
+				padding: 0 10px 0 10px;
+				margin: 20px 0 0 0;
+			}
+			#container {
+				margin: 10px;
+				border: 1px solid #D0D0D0;
+				box-shadow: 0 0 8px #D0D0D0;
+			}
+			.add {
+				height:30px;
+				float:right;
+				margin-right:2%;
+				margin-top:4%;
+				font-size:12px;
+			}
+			#btn-n {
+				height:30px;
+				padding-top:3px;
+				color:white;
+				font-size:14px;
+				background-color:#66cdaa;
+			}
+			#submit {
+				height:30px;
+				padding-top:3px;
+				color:white;
+				font-size:14px;
+				background-color:#3cb371;
+				float: right;
+				margin-right:3%;
+			}
+			#scan {
+				height:30px;
+				padding-top:3px;
+				color:white;
+				font-size:14px;
+				background-color:#e9a456;
+				float: right;
+				/* margin-right:3%; */
+				width: 100px;
+			}
+			.submit {
+				height:30px;
+				padding-top:3px;
+				color:white;
+				font-size:14px;
+				background-color:#3cb371;
+				float: right;
+				margin-right:3%;
+			}
+			.nice-select .list { max-height: 300px; overflow: scroll; }
+			@media (max-width: 600px) {
+				#menu{
+					max-height: 200px;
+					overflow-x: hidden;
+					overflow-y: auto;
+				}
+			}
+			#print {
+				height:30px;
+				padding-top:3px;
+				color:white;
+				font-size:14px;
+				background-color:#3cb371;
+			}
+			.delete {
+			height:30px;
+			padding-top:3px;
+			color:white;
+			font-size:14px;
+			background-color:#ff6347;
+			}
+			.cancel {
+				height:30px;
+				padding-top:3px;
+				color:white;
+				font-size:14px;
+				background-color:#a9a9a9;
+			}
+			.edit {
+				height:30px;
+				padding-top:3px;
+				color:white;
+				font-size:14px;
+				background-color:#ffd700;
+			}
+			.error {
+				color: #FF0000;
+			}

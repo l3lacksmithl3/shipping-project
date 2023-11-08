@@ -1,0 +1,374 @@
+<div class="sb-nav-fixed" style="background-color: #F6F6F6;">
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="row" style="background-color: white; margin-top: 2%">
+
+                    <div class="container-fluid px-4">
+                        <div class="container" id="content" #content>
+                            <div id="print">
+                                <table class="table table-bordered" style="font-size: 14px; width:100%;text-align: center;page-break-after: always;page-break-before: always;padding-top: 1%;">
+                                    <!-- id="datatablesSimple" -->
+                                    <thead>
+                                        <tr>
+                                            <th colspan='12'>KYOCERA (Thailand) Co.,Ltd.</th>
+                                        </tr>
+                                        <tr>
+                                            <th colspan='11'>AMT STOCK IN</th>
+                                            <th colspan='1'>Page 1 of 2</th>
+                                        </tr>
+                                        <tr>
+                                            <th colspan='11'>FINISHED GOOD PRODUCT</th>
+                                            <th colspan='1' style='text-align:left;'>No.</th>
+                                        </tr>
+                                        <tr>
+                                            <th colspan='6'>PRODUCT TYPE</th>
+                                            <th colspan='6'>STATUS</th>
+                                        </tr>
+                                        <tr style='text-align:left;'>
+                                            <td colspan='3'>
+                                                <div class='form-check' style='padding-left:25%;'>
+                                                    <input class='form-check-input' type='checkbox' value='' id='flexCheckChecked' />
+                                                    <label class='form-check-label' for='flexCheckChecked'>Mass</label>
+                                                </div>
+                                            </td>
+                                            <td colspan='3'>
+                                                <div class='form-check' style='padding-left:23%;'>
+                                                    <input class='form-check-input' type='checkbox' value='' id='flexCheckChecked' />
+                                                    <label class='form-check-label' for='flexCheckChecked'>Other</label>
+                                                </div>
+                                            </td>
+                                            <td colspan='6'>
+                                                <div class='form-check' style='padding-left:3%;'>
+                                                    <input class='form-check-input' type='checkbox' value='' id='flexCheckChecked' />
+                                                    <label class='form-check-label' for='flexCheckChecked'>Stock In</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr style='text-align:left;'>
+                                            <td colspan='3'>
+                                                <div class='form-check' style='padding-left:25%;'>
+                                                    <input class='form-check-input' type='checkbox' value='' id='flexCheckChecked' />
+                                                    <label class='form-check-label' for='flexCheckChecked'>Prelaunch</label>
+                                                </div>
+                                            </td>
+                                            <td colspan='3'></td>
+                                            <td colspan='3' style='background-color:grey;'></td>
+                                            <td colspan='3'></td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan='2'>MODEL NO.</th>
+                                            <th colspan='4'>MODEL NAME</th>
+                                            <th colspan='1'>Q'TY</th>
+                                            <th colspan='1'>PALLET NO.</th>
+                                            <th colspan='2'>INVOICE NO.</th>
+                                            <th colspan='2'>REMARK</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of data;">
+                                            <td style='word-break:break-all;' width=20% colspan='2'>{{item.model_no}}</td>
+                                            <td style='word-break:break-all' width='20%' colspan='4'>{{item.model}}</td>
+                                            <td *ngIf="item.type == 'Normal'" width='15%' colspan='1'>{{item.qty}}</td>
+                                            <td *ngIf="item.type != 'Normal'" width='15%' colspan='1'>{{item.qty}} (Box)</td>
+                                            <td width='10%' colspan='1'>{{item.total_pallet}}</td>
+                                            <td width='20%' colspan='2'>{{item.invoice}}</td>
+                                            <td width='15%' colspan='2'></td>
+                                        </tr>
+                                    </tbody>
+                                    <tr>
+                                        <td colspan='6'></td>
+                                        <td colspan='1'>{{sum_all}}</td>
+                                        <td colspan='5'></td>
+                                    </tr>
+                                    <tr style='text-align:left;'>
+                                        <th colspan='1'>ISSUED BY</th>
+                                        <td colspan='11'></td>
+                                    </tr>
+                                    <tr style='text-align:left;'>
+                                        <th colspan='1'>SECTION</th>
+                                        <td colspan='11'> AM-PD </td>
+                                    </tr>
+                                    <tr style='text-align:left;'>
+                                        <th colspan='1'>DATE</th>
+                                        <td colspan='11'>{{date}}</td>
+                                    </tr>
+                                </table>
+                                
+                                <table class="table table-bordered" style="font-size: 14px; width:100%;text-align: center;page-break-before: always;page-break-after: always;padding-top: 1%;">
+                                    <!-- id="datatablesSimple" -->
+                                    <thead>
+                                        <tr>
+                                            <th colspan='12'>KYOCERA (Thailand) Co.,Ltd.</th>
+                                        </tr>
+                                        <tr>
+                                            <th colspan='11'>AMT STOCK OUT</th>
+                                            <th colspan='1'>Page 2 of 2</th>
+                                        </tr>
+                                        <tr>
+                                            <th colspan='11'>FINISHED GOOD PRODUCT</th>
+                                            <th colspan='1' style='text-align:left;'>No.</th>
+                                        </tr>
+                                        <tr>
+                                            <th colspan='6'>PRODUCT TYPE</th>
+                                            <th colspan='6'>STATUS</th>
+                                        </tr>
+                                        <tr style='text-align:left;'>
+                                            <td colspan='3'>
+                                                <div class='form-check' style='padding-left:25%;'>
+                                                    <input class='form-check-input' type='checkbox' value='' id='flexCheckChecked' />
+                                                    <label class='form-check-label' for='flexCheckChecked'>Mass</label>
+                                                </div>
+                                            </td>
+                                            <td colspan='3'>
+                                                <div class='form-check' style='padding-left:23%;'>
+                                                    <input class='form-check-input' type='checkbox' value='' id='flexCheckChecked' />
+                                                    <label class='form-check-label' for='flexCheckChecked'>Other</label>
+                                                </div>
+                                            </td>
+                                            <td colspan='3' style='background-color:grey;'></td>
+                                            <td colspan='3'></td>
+                                        </tr>
+                                        <tr style='text-align:left;'>
+                                            <td colspan='3'>
+                                                <div class='form-check' style='padding-left:25%;'>
+                                                    <input class='form-check-input' type='checkbox' value='' id='flexCheckChecked' />
+                                                    <label class='form-check-label' for='flexCheckChecked'>Prelaunch</label>
+                                                </div>
+                                            </td>
+                                            <td colspan='3'></td>
+                                            <td colspan='6'>
+                                                <div class='form-check' style='padding-left:3%;'>
+                                                    <input class='form-check-input' type='checkbox' value='' id='flexCheckChecked' />
+                                                    <label class='form-check-label' for='flexCheckChecked'>Stock Out</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan='2'>MODEL NO.</th>
+                                            <th colspan='4'>MODEL NAME</th>
+                                            <th colspan='1'>Q'TY</th>
+                                            <th colspan='1'>PALLET NO.</th>
+                                            <th colspan='2'>INVOICE NO.</th>
+                                            <th colspan='2'>REMARK</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of data;">
+                                            <td style='word-break:break-all;' width=20% colspan='2'>{{item.model_no}}</td>
+                                            <td style='word-break:break-all' width='20%' colspan='4'>{{item.model}}</td>
+                                            <td *ngIf="item.type == 'Normal'" width='10%' colspan='1'>{{item.qty}}</td>
+                                            <td *ngIf="item.type != 'Normal'" width='10%' colspan='1'>{{item.qty}} (Box)</td>
+                                            <td width='10%' colspan='1'>{{item.total_pallet}}</td>
+                                            <td width='20%' colspan='2'>{{item.invoice}}</td>
+                                            <td width='15%' colspan='2'></td>
+                                        </tr>
+                                    </tbody>
+                                    <tr>
+                                        <td colspan='6'></td>
+                                        <td colspan='1'>{{sum_all}}</td>
+                                        <td colspan='5'></td>
+                                    </tr>
+                                    <tr style='text-align:left;'>
+                                        <th colspan='1'>ISSUED BY</th>
+                                        <td colspan='11'></td>
+                                    </tr>
+                                    <tr style='text-align:left;'>
+                                        <th colspan='1'>SECTION</th>
+                                        <td colspan='11'> AM-PD </td>
+                                    </tr>
+                                    <tr style='text-align:left;'>
+                                        <th colspan='1'>DATE</th>
+                                        <td colspan='11'>{{date}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div style="margin: auto;width: 20%;">
+                    <button type="button" class="btn btn-success" style="width: 100%;" (click)="captureScreenPDF()">Print PDF</button>
+                </div>
+
+            </main>
+        </div>
+    </div>
+</div>
+<!-- <div id="container">
+    <div class="book" id="print">
+        <div class="page break-after">
+            <div class="subpage">
+                <table width='100%' style="text-align: center; font-size: 10px;page-break-before:always;page-break-inside: initial;page-break-after:always;">
+                    <tr>
+                        <th colspan='12'>KYOCERA (Thailand) Co.,Ltd.</th>
+                    </tr>
+                    <tr>
+                        <th colspan='11'>AMT STOCK IN</th>
+                        <th colspan='1'>Page 1 of 2</th>
+                    </tr>
+                    <tr>
+                        <th colspan='11'>FINISHED GOOD PRODUCT</th>
+                        <th colspan='1' style='text-align:left;'>No.</th>
+                    </tr>
+                    <tr>
+                        <th colspan='6'>PRODUCT TYPE</th>
+                        <th colspan='6'>STATUS</th>
+                    </tr>
+                    <tr style='text-align:left;'>
+                        <td colspan='3'>
+                            <div class='form-check' style='padding-left:25%;'>
+                                <input class='form-check-input' type='checkbox' value='' id='flexCheckChecked' />
+                                <label class='form-check-label' for='flexCheckChecked'>Mass</label>
+                            </div>
+                        </td>
+                        <td colspan='3'>
+                            <div class='form-check' style='padding-left:23%;'>
+                                <input class='form-check-input' type='checkbox' value='' id='flexCheckChecked' />
+                                <label class='form-check-label' for='flexCheckChecked'>Other</label>
+                            </div>
+                        </td>
+                        <td colspan='6'>
+                            <div class='form-check' style='padding-left:3%;'>
+                                <input class='form-check-input' type='checkbox' value='' id='flexCheckChecked' />
+                                <label class='form-check-label' for='flexCheckChecked'>Stock In</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style='text-align:left;'>
+                        <td colspan='3'>
+                            <div class='form-check' style='padding-left:25%;'>
+                                <input class='form-check-input' type='checkbox' value='' id='flexCheckChecked' />
+                                <label class='form-check-label' for='flexCheckChecked'>Prelaunch</label>
+                            </div>
+                        </td>
+                        <td colspan='3'></td>
+                        <td colspan='3' style='background-color:grey;'></td>
+                        <td colspan='3'></td>
+                    </tr>
+                    <tr>
+                        <th colspan='2'>MODEL NO.</th>
+                        <th colspan='4'>MODEL NAME</th>
+                        <th colspan='1'>Q'TY</th>
+                        <th colspan='1'>PALLET NO.</th>
+                        <th colspan='2'>INVOICE NO.</th>
+                        <th colspan='2'>REMARK</th>
+                    </tr>
+                    <tr *ngFor="let item of data;">
+                        <td style='word-break:break-all; width:10%' colspan='2'>{{item.model_no}}</td>
+                        <td style='word-break:break-all' width='10%' colspan='4'>{{item.model}}</td>
+                        <td *ngIf="item.type == 'Normal'" width='20%' colspan='1'>{{item.qty}}</td>
+                        <td *ngIf="item.type != 'Normal'" width='20%' colspan='1'>{{item.qty}} (Box)</td>
+                        <td width='20%' colspan='1'>{{item.total_pallet}}</td>
+                        <td width='20%' colspan='2'>{{item.invoice}}</td>
+                        <td width='15%' colspan='2'></td>
+                    </tr>
+                    <tr>
+                        <td colspan='6'></td>
+                        <td colspan='1'>{{sum_all}}</td>
+                        <td colspan='5'></td>
+                    </tr>
+                    <tr style='text-align:left;'>
+                        <th colspan='1'>ISSUED BY</th>
+                        <td colspan='11'></td>
+                    </tr>
+                    <tr style='text-align:left;'>
+                        <th colspan='1'>SECTION</th>
+                        <td colspan='11'> AM-PD </td>
+                    </tr>
+                    <tr style='text-align:left;'>
+                        <th colspan='1'>DATE</th>
+                        <td colspan='11'>{{date}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div><br />
+        <div class="page break-after">
+            <div class="subpage">
+                <table width='100%' style='text-align:center; font-size: 10px;page-break-before:always;page-break-inside: inherit;'>
+                    <tr>
+                        <th colspan='12'>KYOCERA (Thailand) Co.,Ltd.</th>
+                    </tr>
+                    <tr>
+                        <th colspan='11'>AMT STOCK OUT</th>
+                        <th colspan='1'>Page 1 of 2</th>
+                    </tr>
+                    <tr>
+                        <th colspan='11'>FINISHED GOOD PRODUCT</th>
+                        <th colspan='1' style='text-align:left;'>No.</th>
+                    </tr>
+                    <tr>
+                        <th colspan='6'>PRODUCT TYPE</th>
+                        <th colspan='6'>STATUS</th>
+                    </tr>
+                    <tr style='text-align:left;'>
+                        <td colspan='3'>
+                            <div class='form-check' style='padding-left:25%;'>
+                                <input class='form-check-input' type='checkbox' value='' id='flexCheckChecked' />
+                                <label class='form-check-label' for='flexCheckChecked'>Mass</label>
+                            </div>
+                        </td>
+                        <td colspan='3'>
+                            <div class='form-check' style='padding-left:23%;'>
+                                <input class='form-check-input' type='checkbox' value='' id='flexCheckChecked' />
+                                <label class='form-check-label' for='flexCheckChecked'>Other</label>
+                            </div>
+                        </td>
+                        <td colspan='3' style='background-color:grey;'></td>
+                        <td colspan='3'></td>
+                    </tr>
+                    <tr style='text-align:left;'>
+                        <td colspan='3'>
+                            <div class='form-check' style='padding-left:25%;'>
+                                <input class='form-check-input' type='checkbox' value='' id='flexCheckChecked' />
+                                <label class='form-check-label' for='flexCheckChecked'>Prelaunch</label>
+                            </div>
+                        </td>
+                        <td colspan='3'></td>
+                        <td colspan='6'>
+                            <div class='form-check' style='padding-left:3%;'>
+                                <input class='form-check-input' type='checkbox' value='' id='flexCheckChecked' />
+                                <label class='form-check-label' for='flexCheckChecked'>Stock Out</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan='2'>MODEL NO.</th>
+                        <th colspan='4'>MODEL NAME</th>
+                        <th colspan='1'>Q'TY</th>
+                        <th colspan='1'>PALLET NO.</th>
+                        <th colspan='2'>INVOICE NO.</th>
+                        <th colspan='2'>REMARK</th>
+                    </tr>
+                    <tr *ngFor="let item of data;">
+                        <td style='word-break:break-all; width:10%' colspan='2'>{{item.model_no}}</td>
+                        <td style='word-break:break-all' width='10%' colspan='4'>{{item.model}}</td>
+                        <td *ngIf="item.type == 'Normal'" width='20%' colspan='1'>{{item.qty}}</td>
+                        <td *ngIf="item.type != 'Normal'" width='20%' colspan='1'>{{item.qty}} (Box)</td>
+                        <td width='20%' colspan='1'>{{item.total_pallet}}</td>
+                        <td width='20%' colspan='2'>{{item.invoice}}</td>
+                        <td width='15%' colspan='2'></td>
+                    </tr>
+                    <tr>
+                        <td colspan='6'></td>
+                        <td colspan='1'>{{sum_all}}</td>
+                        <td colspan='5'></td>
+                    </tr>
+                    <tr style='text-align:left;'>
+                        <th colspan='1'>ISSUED BY</th>
+                        <td colspan='11'></td>
+                    </tr>
+                    <tr style='text-align:left;'>
+                        <th colspan='1'>SECTION</th>
+                        <td colspan='11'> AM-PD </td>
+                    </tr>
+                    <tr style='text-align:left;'>
+                        <th colspan='1'>DATE</th>
+                        <td colspan='11'>{{date}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div><br />
+    </div>
+</div> -->

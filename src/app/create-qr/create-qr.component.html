@@ -1,0 +1,165 @@
+    <div id="container">
+        <div class="row">
+            <div class="col-6">
+                <h4 style="margin-left:3%;padding-top: 3%;">Create QR Code</h4>
+            </div>
+            <!-- choice button -->
+            <div class="col-6">
+                <a type="button" class="btn btn-info add" [routerLink]="[ '/history']">
+                History</a>
+                <a type="button" class="btn btn-info add" [routerLink]="[ '/import']">
+                Import File</a>
+                <a type="button" class="btn btn-info add" [routerLink]="[ '/master']">
+                    Import Master</a>
+                <a type="button" class="btn btn-info add" [routerLink]="[ '/member']">
+                Create Member</a>
+                <button type="button" class="btn btn-info add" [routerLink]="[ '/createqr']">
+                Create QR Code</button>
+                <a type="button" class="btn btn-info add" [routerLink]="[ '/shipping']">
+                Dashboard</a>
+            </div>
+        </div><hr />
+        <div id="body">
+            <!-- input -->
+            <div class="row">
+                <div class="col-4"></div>
+                <!-- select choice -->
+                <div class="col-2">
+                    <div class="form-floating">
+                      <select class="form-select" style="width:100%;" id="floatingSelectGrid" (change)="clear()" aria-label="Floating label select example" [(ngModel)]="type" [ngModelOptions]="{standalone: true}">
+                        <option value="Normal">Normal</option>
+                        <option value="Special">Special</option>
+                      </select>
+                      <label for="floatingSelectGrid">Selects Type</label>
+                    </div>
+                </div>
+                <div class="col-4" style="height:70px">
+                    <div class="form-floating">
+                        <select class="form-select" style="width:280px;" id="floatingSelectGrid" aria-label="Floating label select example" [(ngModel)]="invoice" (change)="get_invoice()" [ngModelOptions]="{standalone: true}">
+                            <option *ngFor="let inv of get_inv" [value]="inv">{{inv}}</option>
+                        </select>
+                        <label for="floatingSelectGrid">Selects Invoice</label>
+                    </div>
+                    <!-- <div class="form-floating">
+                        <select class="form-select" style="width:280px;" id="floatingSelectGrid" aria-label="Floating label select example" [(ngModel)]="invoice" (change)="get_invoice()" [ngModelOptions]="{standalone: true}">
+                            <option *ngFor="let inv of get_inv" [value]="inv">{{inv}}</option>
+                        </select>
+                        <label for="floatingSelectGrid">Selects Invoice</label>
+                    </div> -->
+                    <!-- <form class="was-validated">
+                        <div class="input-group">
+                            <div class="form-floating form-group">
+                                <input type="text" class="form-control" id="validationTextarea" style="width:280px" minlength="9" maxlength="9" (keyup)="get_invoice()" [(ngModel)]="invoice" [ngModelOptions]="{standalone: true}" required="required" autocomplete="off" aria-describedby="validationTextareaFeedback"  autofocus>
+                                <label  for="validationTextarea" class="form-label">Invoice</label>
+                                <div id="validationTextareaFeedback" class="invalid-feedback"> Input Model No Min:9  length </div>
+                            </div>
+                        </div>
+                    </form> -->
+                </div>
+                <div class="col-2">
+                    <a type="button" class="btn btn-info add" [routerLink]="[ '/print_qrcode']">
+                        Generate QR</a>
+                </div>
+            </div><br />
+            <div class="row">
+                <div class="col-1" style="padding-top:1%;"><a type="button" (click)="addscan()" style="cursor: pointer;color: rgb(71, 70, 70);" class="btn" id="scan"><i class="bi bi-plus-circle-fill"></i> Add Row</a></div>
+                <div class="col-5"></div>
+                <div class="col-2">
+                    <div class="form-floating">
+                      <input type="number" class="form-control" required="required" style="width:280px" autocomplete="off" id="floatingInputGrid" [(ngModel)]="quantity" disabled>
+                      <label for="floatingInputGrid">Quantity</label>
+                    </div>
+                </div>
+            </div>
+            <!-- show data -->
+            <div class="row">
+                <div class="col-6">
+                    <table class="table" width="100%" style="margin-top:2%; text-align:center;">
+                        <thead class="table-info">
+                            <tr>
+                                <th width="100%" style="font-size: 20px;" colspan="3">Scan QR label</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr>
+                                <td width="30%"></td>
+                                <td width="10%"><b>Model</b></td>
+                                <td width="60%"><b>Quantity</b></td>
+                            </tr>
+                            <tr *ngFor="let item of arr;let i = index">
+                                <td><label style="float: right;"><input type="checkbox" (click)="_checked(i)" /> &nbsp; <i class="bi bi-trash-fill" style="background-color: #eeecec;cursor: pointer;color: red;" (click)="remove(i)"></i></label></td>
+                                <td><input type="text" required="required" autofocus [(ngModel)]="data_production[i].p_model"  [attr.id]="'test' + i"  (change)="check_qrcode(i)" [ngModelOptions]="{standalone: true}" /></td>
+                                <td *ngIf="type == 'Normal' && checked == 'A'"><input type="text" [(ngModel)]="data_production[i].p_qty" disabled (change)="sum_qty(arr)" [ngModelOptions]="{standalone: true}" /></td>
+                                <td *ngIf="type == 'Normal' && checked != 'A'"><input type="text" [(ngModel)]="data_production[i].p_qty" (change)="sum_qty(arr)" [ngModelOptions]="{standalone: true}" /></td>
+                                <td *ngIf="type != 'Normal'"><input type="text" [(ngModel)]="data_production[i].p_qty" (change)="sum_qty(arr)" [ngModelOptions]="{standalone: true}" /></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><b>Total</b></td>
+                                <td *ngIf="qty != quantity" style="background-color:red">{{qty}}</td>
+                                <td *ngIf="qty == quantity">{{qty}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-6">
+                    <table class="table" width="100%" style="margin-top:2%; text-align:center;">
+                        <thead class="table-info">
+                            <tr>
+                                <th width="100%" style="font-size: 20px;" colspan="2">Data Logistic</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><b>Model</b></td>
+                                <td><b>Quantity</b></td>
+                            </tr>
+                            <tr>
+                                <!-- <td *ngIf="l_model != data_production.p_model" style="background-color:red">{{l_model}}</td>
+                                <td *ngIf="l_model == data_production.p_model">{{l_model}}</td> -->
+                                <td>{{l_model}}</td>
+                                <td>{{quantity}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Total</b></td>
+                                <td>{{quantity}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    
+        <a type="button" *ngIf="qty == quantity" (click)="save_qr('print')" class="btn" id="submit"><i class="bi bi-printer"></i> Print</a>
+        <button type="button" *ngIf="qty != quantity" disabled class="btn" id="submit"><i class="bi bi-printer"></i> Print</button>
+        <a type="button" *ngIf="qty == quantity" (click)="save_qr('save')" class="btn" id="submit">Save</a>
+        <button type="button" *ngIf="qty != quantity" disabled class="btn" id="submit">Save</button>
+        <br /><br />
+        
+    </div>
+    <div [hidden]="type != 1">
+        <div class="container" id="print">
+        <table width='100%' *ngFor="let item of count_data;" style='padding-top:0%;padding-bottom:0%;font-size: 16px; page-break-after: always'> <!-- border: 1px solid black; -->
+            <tbody>
+                <tr>
+                    <td colspan="2"><img style='width:70%;padding-bottom:2%;height: 40px;padding-top: 7%;padding-left: 3%;' [src]="imageSource"></td>
+                    <td rowspan="3" style="padding-top: 8%;"><qr-code class="qr-code" [size]="90" [value]="item.qrInfo" ></qr-code></td>
+                </tr>
+                <tr>
+                    <td style="height: 28px;padding-left: 5%;padding-top: 3px;"><b>Invoice No.</b></td>
+                    <td style="height: 28px;padding-left: 5%;padding-top: 3px;">{{item.invoice}}</td>
+                </tr>
+                <tr>
+                    <td *ngIf="item.type == 'Normal'" style="height: 28px;padding-left: 5%;"><b>Pallet No.</b></td>
+                    <td *ngIf="item.type == 'Special'" style="height: 28px;padding-left: 5%;"><b>Box No.</b></td>
+                    <td style="height: 28px;padding-left: 5%;">{{item.no_pallet}} / {{item.total_pallet}}</td>
+                </tr>
+                <tr>
+                    <td style="height: 28px;padding-left: 5%;"><b>Qty</b></td>
+                    <td style="height: 28px;padding-left: 5%;">{{item.qty}}</td>
+                    <td></td>
+                </tr>
+            </tbody>
+       </table>
+    </div>
